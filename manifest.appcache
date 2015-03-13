@@ -1,0 +1,37 @@
+CACHE MANIFEST
+#version 0.01
+
+CACHE:
+index.html
+css/card.min.css
+css/style.css
+css/swipebox.min.css
+js/angular.min.js
+js/angular.min.js.map
+js/ios-orientationchange-fix.js
+js/jquery-2.1.0.min.js
+js/jquery.swipebox.min.js
+img/icons.png
+img/icons.svg
+img/loader.gif
+img/P1020418.JPG
+img/P1020419.JPG
+img/P1020429.JPG
+img/P1020435.JPG
+img/P1020442.JPG
+img/P1020449.JPG
+img/P1020452.JPG
+img/P1020506.JPG
+img/P1020508.JPG
+img/P1020514.JPG
+img/P1020531.JPG
+img/P1020562.JPG
+img/P1020614.JPG
+img/P1020680.JPG
+img/P1020682.JPG
+img/P1020694.JPG
+img/P1020713.JPG
+img/P1020733.JPG
+img/P1020799.JPG
+img/P1020846.JPG
+img/P1020862.JPG

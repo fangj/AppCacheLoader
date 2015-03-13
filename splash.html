@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html  manifest="manifest.appcache">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>App Cache Loader</title>
+    <style type="text/css" media="screen">
+    .loader:before,
+    .loader:after,
+    .loader {
+        border-radius: 50%;
+        width: 2.5em;
+        height: 2.5em;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        -webkit-animation: load7 1.8s infinite ease-in-out;
+        animation: load7 1.8s infinite ease-in-out;
+    }
+    .loader {
+        margin: 8em auto;
+        font-size: 10px;
+        position: relative;
+        text-indent: -9999em;
+        -webkit-animation-delay: 0.16s;
+        animation-delay: 0.16s;
+    }
+    .loader:before {
+        left: -3.5em;
+    }
+    .loader:after {
+        left: 3.5em;
+        -webkit-animation-delay: 0.32s;
+        animation-delay: 0.32s;
+    }
+    .loader:before,
+    .loader:after {
+        content: '';
+        position: absolute;
+        top: 0;
+    }
+    @-webkit-keyframes load7 {
+        0%, 80%, 100% {
+            box-shadow: 0 2.5em 0 -1.3em #ffffff;
+        }
+        40% {
+            box-shadow: 0 2.5em 0 0 #FFF;
+        }
+    }
+    @keyframes load7 {
+        0%, 80%, 100% {
+            box-shadow: 0 2.5em 0 -1.3em #ffffff;
+        }
+        40% {
+            box-shadow: 0 2.5em 0 0 #FFF;
+        }
+    }
+    /*body*/
+    
+    body {
+        background-color: gray;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="loader">Loading...</div>
+    <div style="text-align: center">
+        <h1 style="color:white"><span id="pencent"></span>%</h1>
+    </div>
+    <script type="text/javascript">
+    var appCache = window.applicationCache;
+
+    function setPencent(fNumber) {
+        var number = Math.round(fNumber * 100);
+        console.log(number);
+        var pencent = document.getElementById("pencent");
+        pencent.textContent = number;
+    }
+
+    function over () {
+    	console.log("over");
+    	location.href="index.html";
+    }
+
+    // Check if a new cache is available on page load.
+    window.addEventListener('load', function(e) {
+
+        window.applicationCache.addEventListener('updateready', function(e) {
+                // Browser downloaded a new app cache.
+                // Swap it in and reload the page to get the new hotness.
+                window.applicationCache.swapCache();
+                if (confirm('A new version of this site is available. Load it?')) {
+                    window.location.reload();
+                }
+        }, false);
+
+        window.applicationCache.addEventListener('progress', function(pe) {
+        	console.log(pe);
+        	setPencent(pe.loaded/pe.total);
+        },false);
+
+        window.applicationCache.addEventListener('noupdate', function(pe) {
+        	over();
+        },false);
+
+        window.applicationCache.addEventListener('cached', function(pe) {
+        	over();
+        },false);
+
+        window.applicationCache.addEventListener('updateready', function(pe) {
+        	over();
+        },false);
+
+        window.applicationCache.addEventListener('obsolete', function(pe) {
+        	over();
+        },false);
+
+        window.applicationCache.addEventListener('error', function(pe) {
+        	over();
+        },false);
+
+    }, false);
+    </script>
+</body>
+
+</html>

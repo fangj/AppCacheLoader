@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>Home</title>
+    <link rel="stylesheet" href="css/swipebox.min.css">
+    <link rel="stylesheet" href="css/card.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body ng-app="app" ng-controller="con">
+    <h1>{{title}}</h1>
+    <div class="container">
+        <div class="ui card" style="margin:1em auto" ng-repeat="img in imgs">
+            <div class="image">
+                <img ng-src="{{img}}" style="width=100%" href="{{img}}" class="swipebox" title="{{img}}">
+            </div>
+            <div class="content">
+                <a class="header">{{img}}</a>
+                <div class="meta">
+                    <span class="date">by Fang Jian</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/angular.min.js"></script>
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <script src="js/ios-orientationchange-fix.js"></script>
+    <script src="js/jquery.swipebox.min.js"></script>
+    <script type="text/javascript">
+    var imgs = ["img/P1020418.JPG",
+        "img/P1020419.JPG",
+        "img/P1020429.JPG",
+        "img/P1020435.JPG",
+        "img/P1020442.JPG",
+        "img/P1020449.JPG",
+        "img/P1020452.JPG",
+        "img/P1020506.JPG",
+        "img/P1020508.JPG",
+        "img/P1020514.JPG",
+        "img/P1020531.JPG",
+        "img/P1020562.JPG",
+        "img/P1020614.JPG",
+        "img/P1020680.JPG",
+        "img/P1020682.JPG",
+        "img/P1020694.JPG",
+        "img/P1020713.JPG",
+        "img/P1020733.JPG",
+        "img/P1020799.JPG",
+        "img/P1020846.JPG",
+        "img/P1020862.JPG"
+    ];
+    angular.module('app', []).controller('con', function($scope) {
+        $scope.title = "Hello Cat!";
+        $scope.imgs = imgs;
+    });
+    (function($) {
+        $('.swipebox').swipebox();
+    })(jQuery);
+    </script>
+</body>
+
+</html>
